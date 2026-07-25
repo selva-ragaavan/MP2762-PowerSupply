@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "mps_footprints") (type "KiCad") (uri "${KIPRJMOD}/mps_footprints.pretty") (options "") (descr ""))
+)
