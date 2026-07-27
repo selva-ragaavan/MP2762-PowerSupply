@@ -69,7 +69,13 @@
           "thermal_relief_spoke_width": 0.5
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -140,22 +146,22 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
-        "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.5,
+        "min_clearance": 0.15,
+        "min_connection": 0.15,
+        "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.25,
-        "min_microvia_diameter": 0.2,
+        "min_hole_clearance": 0.3,
+        "min_hole_to_hole": 0.3,
+        "min_microvia_diameter": 0.4,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
-        "min_silk_clearance": 0.0,
-        "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
+        "min_silk_clearance": 0.15,
+        "min_text_height": 0.15,
+        "min_text_thickness": 0.15,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.2,
-        "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_track_width": 0.15,
+        "min_via_annular_width": 0.15,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -203,7 +209,12 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0,
+        0.2,
+        0.5,
+        1.8
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -230,7 +241,16 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 0.7,
+          "drill": 0.3
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -512,6 +532,71 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "3.3v_ref",
+        "pcb_color": "rgb(224, 14, 255)",
+        "priority": 2,
+        "schematic_color": "rgb(255, 226, 3)",
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "i2c",
+        "pcb_color": "rgb(73, 255, 13)",
+        "priority": 3,
+        "schematic_color": "rgb(0, 64, 255)",
+        "track_width": 0.2,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "power(5-20)v",
+        "pcb_color": "rgb(255, 22, 0)",
+        "priority": 4,
+        "schematic_color": "rgb(255, 32, 0)",
+        "track_width": 1.8,
+        "tuning_profile": "",
+        "via_diameter": 0.7,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "sensor_analog",
+        "pcb_color": "rgb(0, 2, 255)",
+        "priority": 0,
+        "schematic_color": "rgb(255, 238, 18)",
+        "track_width": 0.2,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "signal",
+        "pcb_color": "rgb(240, 255, 0)",
+        "priority": 1,
+        "schematic_color": "rgb(255, 0, 235)",
+        "track_width": 0.2,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -519,7 +604,72 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/VBUS"
+      },
+      {
+        "netclass": "signal",
+        "pattern": "/CC(1|2)"
+      },
+      {
+        "netclass": "signal",
+        "pattern": "/ACOK|/INT|/PROCHOT|/PSYS|"
+      },
+      {
+        "netclass": "3.3v_ref",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "PGND"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "AGND"
+      },
+      {
+        "netclass": "3.3v_ref",
+        "pattern": "/VNTC"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/BATT"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/BST(1|2|3)"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/SW(1|2|3)"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/VCC"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "+VCC_B"
+      },
+      {
+        "netclass": "sensor_analog",
+        "pattern": "/I(AM|BM)"
+      },
+      {
+        "netclass": "power(5-20)v",
+        "pattern": "/IN|/SYS"
+      },
+      {
+        "netclass": "i2c",
+        "pattern": "/S(CL|DA)"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
